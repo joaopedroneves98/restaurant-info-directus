@@ -17,7 +17,7 @@ const httpOptions = {
 })
 export class UserService {
 
-  url = 'https://restaurant-cms-strapi.herokuapp.com/auth/local';
+  url = 'http://localhost/directus/public/cms/';
 
   username: string;
   token: string;
@@ -44,24 +44,27 @@ export class UserService {
   }
 
   login(email, password) {
-    return this.http.post(this.url, {
-      identifier: email,
+    return this.http.post(this.url + 'auth/authenticate', {
+      email,
       password
     }, httpOptions).subscribe(
       (response: any) => {
-        this.setCookie(response.jwt);
-        this.setUser(email, response.jwt, email);
+        this.setCookie(response.data.token);
+        this.setUser(email, response.data.token, email);
         this.loggedIn.next(true);
         this.router.navigateByUrl('/');
       },
       (error) => this.snackbarService.open('Wrong credentials!', false));
   }
 
-  register(username, email, password) {
-    return this.http.post(this.url + '/register', {
-      username,
+  register(email, password, first_name, last_name) {
+    return this.http.post(this.url + 'users', {
       email,
-      password
+      password,
+      first_name,
+      last_name,
+      role: "3",
+      status: "active"
     }, httpOptions).subscribe(
       (response: any) => {
         this.login(email, password);

@@ -18,13 +18,13 @@
         <mat-error *ngIf="hasError('description', 'required')">Description is required</mat-error>
       </mat-form-field>
       <!-- <p>Chef</p> -->
-      <mat-form-field>
+      <!-- <mat-form-field>
         <mat-select matSelect formControlName="chef" placeholder="Chef">
           <mat-option *ngFor="let chef of chefs$ | async" [value]="chef">
             {{chef.name}}
           </mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
     </form>
   </div>
   <div mat-dialog-actions>

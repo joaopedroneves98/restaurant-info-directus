@@ -34,8 +34,8 @@ export class AddRestaurantDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.chefService.getChefs();
-    this.chefs$ = this.chefService.getChefList;
+    // this.chefService.getChefs();
+    // this.chefs$ = this.chefService.getChefList;
   }
 
   save() {

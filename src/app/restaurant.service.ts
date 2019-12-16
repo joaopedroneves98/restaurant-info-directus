@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class RestaurantService {
-  devUrl = 'http://localhost:1337/restaurants/';
+  devUrl = 'http://localhost/directus/public/cms/items/restaurants';
   prodUrl = 'https://restaurant-cms-strapi.herokuapp.com/restaurants/';
 
   private restaurantList = new BehaviorSubject<any[]>([]);
@@ -30,7 +30,7 @@ export class RestaurantService {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + this.userService.token,
       })
-    }).subscribe((data: any[]) => { this.restaurantList.next(data); });
+    }).subscribe((data: any) => { this.restaurantList.next(data.data); });
   }
 
   createRestaurant(restaurant) {
