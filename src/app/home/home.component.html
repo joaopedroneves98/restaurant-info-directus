@@ -1,0 +1,7 @@
+<app-restaurant-list *ngIf="isLoggedIn$ | async; else loggedOut"></app-restaurant-list>
+<ng-template #loggedOut>
+    <div class="content">
+        <h1>Welcome to the restaurant portal!</h1>
+        <p><a [routerLink]="['/login']">Login</a> to see the list of restaurants.</p>
+    </div>
+</ng-template>

@@ -1,0 +1,11 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.toolbar-text {
+    padding: 5px;
+}
+
+.home-btn {
+    font-size: x-large;
+}

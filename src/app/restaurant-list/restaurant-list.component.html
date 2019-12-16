@@ -1,0 +1,24 @@
+<!-- <app-add-restaurant></app-add-restaurant> -->
+<p class="content-link">Content retrieved from: <a href="{{url}}" target="_blank">{{url}}</a></p>
+<mat-spinner class="spinner" *ngIf="isLoading | async" [diameter]="70" mode="indeterminate" color="accent"></mat-spinner>
+<div class="content">
+    <mat-card class="example-card" *ngFor="let res of restaurants$ | async">
+        <mat-card-header>
+            <mat-card-title><fa-icon [icon]="faAsterisk"></fa-icon>&nbsp;{{res.name}}</mat-card-title>
+            <mat-card-subtitle>{{res.address}}&nbsp;
+                <a href="https://www.google.pt/maps/place/{{res.address}}" target="_blank">
+                    <fa-icon [icon]="faMapMarkedAlt"></fa-icon>
+                </a>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                {{res.description}}
+            </p>
+        </mat-card-content>
+        <!-- <mat-card-actions *ngIf="isLoggedIn$ | async">
+            <button mat-button (click)="deleteRestaurant(res)">Remove</button>
+        </mat-card-actions> -->
+    </mat-card>
+
+</div>

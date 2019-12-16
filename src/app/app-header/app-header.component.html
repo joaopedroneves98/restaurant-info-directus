@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+    <span>
+        <button class="home-btn" mat-button matTooltip="Home" [routerLink]="['/']">
+            <fa-icon [icon]="faUtensils"></fa-icon>&nbsp;Registered Restaurants
+        </button>
+    </span>
+    <span class="example-spacer"></span>
+    <!-- <div *ngIf="isLoggedIn$ | async; else loggedIn">
+        <div *ngFor="let head of loggedInHeaders">
+            <button mat-button [routerLink]="head.url">{{head.name}}</button>
+        </div>
+        <button mat-button (click)="onLogout()">Logout</button>
+    </div>
+    <ng-template #loggedIn>
+        <div *ngFor="let head of loggedOutHeaders">
+            <button mat-button [routerLink]="head.url">{{head.name}}</button>
+        </div>
+    </ng-template> -->
+    <button mat-button (click)="onLogout()"*ngIf="isLoggedIn$ | async; else loggedIn">Logout</button>
+    <ng-template #loggedIn>
+        <button mat-button [routerLink]="['/login']">Login</button>
+        <button mat-button [routerLink]="['/register']">Register</button>
+    </ng-template>
+</mat-toolbar>

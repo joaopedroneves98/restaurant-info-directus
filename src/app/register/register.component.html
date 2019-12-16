@@ -1,0 +1,28 @@
+<mat-card class="register-card">
+    <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+        <mat-card-content>
+            <mat-form-field class="example-full-width">
+                <input type="text" matInput placeholder="Username" formControlName="username">
+                <mat-error *ngIf="hasError('username', 'required')">Username is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input type="email" matInput placeholder="Email" formControlName="email">
+                <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
+                <mat-error *ngIf="hasError('email', 'email')">Email is invalid!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input type="password" matInput placeholder="Password" formControlName="password">
+                <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input type="password" matInput placeholder="Confirm Password" formControlName="confirmPassword">
+                <mat-error *ngIf="registerForm.get('confirmPassword').errors && 
+                registerForm.get('confirmPassword').errors.ConfirmPassword">Passwords don't match!</mat-error>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">Submit</button>
+        </mat-card-actions>
+    </form>
+</mat-card>

@@ -1,0 +1,34 @@
+<div class="dialog-container">
+  <h1 mat-dialog-title>New Restaurant</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="form">
+      <!-- <p>Name</p> -->
+      <mat-form-field>
+        <input matInput formControlName="name" placeholder="Name">
+        <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
+      </mat-form-field>
+      <!-- <p>Address</p> -->
+      <mat-form-field>
+        <input matInput formControlName="address" placeholder="Address">
+        <mat-error *ngIf="hasError('address', 'required')">Address is required</mat-error>
+      </mat-form-field>
+      <!-- <p>Description</p> -->
+      <mat-form-field>
+        <textarea matInput formControlName="description" placeholder="Description"></textarea>
+        <mat-error *ngIf="hasError('description', 'required')">Description is required</mat-error>
+      </mat-form-field>
+      <!-- <p>Chef</p> -->
+      <mat-form-field>
+        <mat-select matSelect formControlName="chef" placeholder="Chef">
+          <mat-option *ngFor="let chef of chefs$ | async" [value]="chef">
+            {{chef.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close color="warn">Cancel</button>
+    <button mat-button [mat-dialog-close]="form.value" type="submit" [disabled]="!form.valid">Submit</button>
+  </div>
+</div>
